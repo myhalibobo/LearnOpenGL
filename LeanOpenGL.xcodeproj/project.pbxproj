@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3ADB9FBB260E0D7300A11AE8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB9FBA260E0D7300A11AE8 /* main.cpp */; };
+		3ADB9FC5260E180700A11AE8 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB9FC4260E180700A11AE8 /* glad.c */; };
+		3AEFE28A260F078C007253A5 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEFE289260F078C007253A5 /* libglfw3.a */; };
+		3AEFE28C260F08D9007253A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEFE28B260F08D9007253A5 /* Cocoa.framework */; };
+		3AEFE28E260F08E9007253A5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEFE28D260F08E9007253A5 /* OpenGL.framework */; };
+		3AEFE290260F08F8007253A5 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEFE28F260F08F8007253A5 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,11 @@
 /* Begin PBXFileReference section */
 		3ADB9FB7260E0D7300A11AE8 /* LeanOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LeanOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB9FBA260E0D7300A11AE8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3ADB9FC4260E180700A11AE8 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
+		3AEFE289260F078C007253A5 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = lib/libglfw3.a; sourceTree = "<group>"; };
+		3AEFE28B260F08D9007253A5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3AEFE28D260F08E9007253A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		3AEFE28F260F08F8007253A5 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +42,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AEFE290260F08F8007253A5 /* IOKit.framework in Frameworks */,
+				3AEFE28E260F08E9007253A5 /* OpenGL.framework in Frameworks */,
+				3AEFE28C260F08D9007253A5 /* Cocoa.framework in Frameworks */,
+				3AEFE28A260F078C007253A5 /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +57,7 @@
 			children = (
 				3ADB9FB9260E0D7300A11AE8 /* LeanOpenGL */,
 				3ADB9FB8260E0D7300A11AE8 /* Products */,
+				3ADB9FC1260E0EA600A11AE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +72,21 @@
 		3ADB9FB9260E0D7300A11AE8 /* LeanOpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				3ADB9FC4260E180700A11AE8 /* glad.c */,
 				3ADB9FBA260E0D7300A11AE8 /* main.cpp */,
 			);
 			path = LeanOpenGL;
+			sourceTree = "<group>";
+		};
+		3ADB9FC1260E0EA600A11AE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AEFE28F260F08F8007253A5 /* IOKit.framework */,
+				3AEFE28D260F08E9007253A5 /* OpenGL.framework */,
+				3AEFE28B260F08D9007253A5 /* Cocoa.framework */,
+				3AEFE289260F078C007253A5 /* libglfw3.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ADB9FBB260E0D7300A11AE8 /* main.cpp in Sources */,
+				3ADB9FC5260E180700A11AE8 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +267,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -247,6 +280,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
