@@ -35,6 +35,7 @@
 		3AEFE28B260F08D9007253A5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3AEFE28D260F08E9007253A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		3AEFE28F260F08F8007253A5 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		A62A944E26186BAB00F25659 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 			children = (
 				3ADB9FC4260E180700A11AE8 /* glad.c */,
 				3ADB9FBA260E0D7300A11AE8 /* main.cpp */,
+				A62A944E26186BAB00F25659 /* stb_image.h */,
 			);
 			path = LeanOpenGL;
 			sourceTree = "<group>";
