@@ -36,6 +36,10 @@
 		3AEFE28D260F08E9007253A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		3AEFE28F260F08F8007253A5 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		A62A944E26186BAB00F25659 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		A62A9452261AECF700F25659 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
+		A62A9453261B00D400F25659 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		A62A9454261B030200F25659 /* ShaderGenVAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderGenVAO.h; sourceTree = "<group>"; };
+		A62A9456261B1C7800F25659 /* TextureReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureReader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +77,13 @@
 		3ADB9FB9260E0D7300A11AE8 /* LeanOpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				A62A9452261AECF700F25659 /* res */,
 				3ADB9FC4260E180700A11AE8 /* glad.c */,
 				3ADB9FBA260E0D7300A11AE8 /* main.cpp */,
+				A62A9456261B1C7800F25659 /* TextureReader.h */,
+				A62A9454261B030200F25659 /* ShaderGenVAO.h */,
 				A62A944E26186BAB00F25659 /* stb_image.h */,
+				A62A9453261B00D400F25659 /* Shader.h */,
 			);
 			path = LeanOpenGL;
 			sourceTree = "<group>";
