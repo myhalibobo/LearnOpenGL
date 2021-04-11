@@ -53,5 +53,83 @@ unsigned int genTextrueVAO(){
     return VAO;
 }
 
+unsigned int genCubeVAO(){
+    float vertices[] = {
+         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+          0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+          0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+         -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+          0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+          0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+          0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+         -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+         -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+         -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+          0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+          0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+          0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+          0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+          0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+          0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+         -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+          0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+          0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+          0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+          0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+          0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+          0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+     };
+
+//    glm::vec3 cubePositions[] = {
+//        glm::vec3( 0.0f,  0.0f,  0.0f),
+//        glm::vec3( 2.0f,  5.0f, -15.0f),
+//        glm::vec3(-1.5f, -2.2f, -2.5f),
+//        glm::vec3(-3.8f, -2.0f, -12.3f),
+//        glm::vec3( 2.4f, -0.4f, -3.5f),
+//        glm::vec3(-1.7f,  3.0f, -7.5f),
+//        glm::vec3( 1.3f, -2.0f, -2.5f),
+//        glm::vec3( 1.5f,  2.0f, -2.5f),
+//        glm::vec3( 1.5f,  0.2f, -1.5f),
+//        glm::vec3(-1.3f,  1.0f, -1.5f)
+//    };
+    unsigned int VAO,VBO,EBO;
+    glGenVertexArrays(1,&VAO);
+    glBindVertexArray(VAO);
+    
+    glGenBuffers(1,&VBO);
+    glBindBuffer(GL_ARRAY_BUFFER,VBO);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW);
+    
+//    glGenBuffers(1,&EBO);
+//    glBindBuffer(GL_ARRAY_BUFFER,EBO);
+//    glBufferData(GL_ARRAY_BUFFER,sizeof(cubePositions),cubePositions,GL_STATIC_DRAW));
+    
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(float) * 5,(void*)(0));
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,sizeof(float) * 5,(void*)(sizeof(float) * 3));
+    glEnableVertexAttribArray(1);
+    
+    glBindVertexArray(0);
+    return VAO;
+    
+}
 
 #endif /* ShaderGenVAO_h */

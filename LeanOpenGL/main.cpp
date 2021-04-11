@@ -70,7 +70,8 @@ int main()
     }
     //初始化Shader
     Shader texShader("res/shader/texture.vs","res/shader/texture.fs");
-    unsigned int VAO = genTextrueVAO();
+//    unsigned int VAO = genTextrueVAO();
+    unsigned int VAO = genCubeVAO();
     texShader.use();
     
     unsigned int tex1 = getTexture("res/pic/container.jpg");
@@ -78,6 +79,7 @@ int main()
     glUniform1i(glGetUniformLocation(texShader.ID, "tex1"), 0);
     glUniform1i(glGetUniformLocation(texShader.ID, "tex2"), 1);
     
+    glEnable(GL_DEPTH_TEST);
     //设置多边形模式
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -86,7 +88,8 @@ int main()
         processInput(window);
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+//        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         texShader.use();
         glActiveTexture(GL_TEXTURE0);
@@ -95,7 +98,8 @@ int main()
         glBindTexture(GL_TEXTURE_2D,tex2);
         
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        
+        model = glm::rotate(model, glm::radians((float)glfwGetTime()*50), glm::vec3(1.0f, 1.0f, 1.0f));
         glm::mat4 view = glm::mat4(1.0f);
         view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
         glm::mat4 projection = glm::mat4(1.0f);
@@ -105,7 +109,8 @@ int main()
         texShader.setMat4("project", projection);
         
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES,0,36);
+//        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         
         glfwSwapBuffers(window);
         glfwPollEvents();
