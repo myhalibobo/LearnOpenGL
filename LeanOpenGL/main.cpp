@@ -17,7 +17,9 @@
 #include "Shader.h"
 #include "ShaderGenVAO.h"
 #include "TextureReader.h"
-
+#include <time.h>
+#include <sys/timeb.h>
+float scale = 1;
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
@@ -52,6 +54,12 @@ GLFWwindow* initOpenGL(){
     }
     return window;
 }
+long long getTimeStamp()
+{
+    timeb t;
+    ftime(&t);
+    return t.time * 1000 + t.millitm;
+}
 
 int main()
 {
@@ -64,8 +72,12 @@ int main()
     Shader texShader("res/shader/texture.vs","res/shader/texture.fs");
     unsigned int VAO = genTextrueVAO();
     texShader.use();
-    unsigned int textureID = getTexture("res/pic/pic_emotion_5.png");
-    glUniform1i(glGetUniformLocation(texShader.ID, "tex"), 0);
+    unsigned int tex1 = getTexture("res/pic/container.jpg");
+    unsigned int tex2 = getTexture("res/pic/awesomeface.png");
+    glUniform1i(glGetUniformLocation(texShader.ID, "tex1"), 0);
+    glUniform1i(glGetUniformLocation(texShader.ID, "tex2"), 1);
+    
+//    glUniform1i(glGetUniformLocation(texShader.ID, "tex"), 0);
     //设置多边形模式
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -77,8 +89,25 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
         
         texShader.use();
-        glBindTexture(GL_TEXTURE_2D,textureID);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D,tex1);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D,tex2);
         glBindVertexArray(VAO);
+//        texShader.setFloat("time",i++);
+        texShader.setFloat("scale",scale);
+        
+        
+        glm::mat4 mt = glm::mat4(1.0);
+        mt = glm::rotate(mt, (float)glfwGetTime(), glm::vec3(0,0,1));
+        texShader.setMat4("trans", mt);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        
+        mt = glm::mat4(1.0);
+        mt = glm::translate(mt, glm::vec3(0.2,0.2,0));
+        mt = glm::rotate(mt, (float)glfwGetTime(), glm::vec3(0,0,1));
+        
+        texShader.setMat4("trans", mt);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         
         glfwSwapBuffers(window);
@@ -92,6 +121,10 @@ void processInput(GLFWwindow *window)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    if(glfwGetKey(window, GLFW_KEY_UP))
+        scale+=0.5;
+    if(glfwGetKey(window, GLFW_KEY_DOWN))
+        scale-=0.05;
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
