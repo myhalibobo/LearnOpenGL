@@ -61,7 +61,7 @@ int main()
         return -1;
     }
     //初始化Shader
-    Shader texShader("res/shader/texture.vsh","res/shader/texture.fsh");
+    Shader texShader("res/shader/texture.vs","res/shader/texture.fs");
     unsigned int VAO = genTextrueVAO();
     texShader.use();
     unsigned int textureID = getTexture("res/pic/pic_emotion_5.png");
