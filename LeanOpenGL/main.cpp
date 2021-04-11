@@ -72,12 +72,12 @@ int main()
     Shader texShader("res/shader/texture.vs","res/shader/texture.fs");
     unsigned int VAO = genTextrueVAO();
     texShader.use();
+    
     unsigned int tex1 = getTexture("res/pic/container.jpg");
     unsigned int tex2 = getTexture("res/pic/awesomeface.png");
     glUniform1i(glGetUniformLocation(texShader.ID, "tex1"), 0);
     glUniform1i(glGetUniformLocation(texShader.ID, "tex2"), 1);
     
-//    glUniform1i(glGetUniformLocation(texShader.ID, "tex"), 0);
     //设置多边形模式
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -93,21 +93,18 @@ int main()
         glBindTexture(GL_TEXTURE_2D,tex1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D,tex2);
+        
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        glm::mat4 view = glm::mat4(1.0f);
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        glm::mat4 projection = glm::mat4(1.0f);
+        projection = glm::perspective(glm::radians(45.0f), (float)(SCR_WIDTH/SCR_HEIGHT), 0.1f, 100.0f);
+        texShader.setMat4("model", model);
+        texShader.setMat4("view", view);
+        texShader.setMat4("project", projection);
+        
         glBindVertexArray(VAO);
-//        texShader.setFloat("time",i++);
-        texShader.setFloat("scale",scale);
-        
-        
-        glm::mat4 mt = glm::mat4(1.0);
-        mt = glm::rotate(mt, (float)glfwGetTime(), glm::vec3(0,0,1));
-        texShader.setMat4("trans", mt);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        
-        mt = glm::mat4(1.0);
-        mt = glm::translate(mt, glm::vec3(0.2,0.2,0));
-        mt = glm::rotate(mt, (float)glfwGetTime(), glm::vec3(0,0,1));
-        
-        texShader.setMat4("trans", mt);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         
         glfwSwapBuffers(window);
