@@ -9,7 +9,7 @@
 #define TextureReader_h
 #include "GLFW/glfw3.h"
 #include <string>
-
+#include "stb_image.h"
 unsigned int getTexture(const char* path){
     stbi_set_flip_vertically_on_load(true);
     unsigned int textureID;

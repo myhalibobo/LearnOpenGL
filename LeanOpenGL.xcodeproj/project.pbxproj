@@ -13,6 +13,8 @@
 		3AEFE28C260F08D9007253A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEFE28B260F08D9007253A5 /* Cocoa.framework */; };
 		3AEFE28E260F08E9007253A5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEFE28D260F08E9007253A5 /* OpenGL.framework */; };
 		3AEFE290260F08F8007253A5 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEFE28F260F08F8007253A5 /* IOKit.framework */; };
+		A666CFB926624F6200332D3B /* libIrrXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A666CFB726624F6200332D3B /* libIrrXML.a */; };
+		A666CFBA26624F6200332D3B /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A666CFB826624F6200332D3B /* libassimp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +42,10 @@
 		A62A9453261B00D400F25659 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		A62A9454261B030200F25659 /* ShaderGenVAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderGenVAO.h; sourceTree = "<group>"; };
 		A62A9456261B1C7800F25659 /* TextureReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureReader.h; sourceTree = "<group>"; };
+		A666CFB3266246D400332D3B /* model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
+		A666CFB52662490600332D3B /* mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
+		A666CFB726624F6200332D3B /* libIrrXML.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIrrXML.a; path = lib/libIrrXML.a; sourceTree = "<group>"; };
+		A666CFB826624F6200332D3B /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = lib/libassimp.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A666CFB926624F6200332D3B /* libIrrXML.a in Frameworks */,
+				A666CFBA26624F6200332D3B /* libassimp.a in Frameworks */,
 				3AEFE290260F08F8007253A5 /* IOKit.framework in Frameworks */,
 				3AEFE28E260F08E9007253A5 /* OpenGL.framework in Frameworks */,
 				3AEFE28C260F08D9007253A5 /* Cocoa.framework in Frameworks */,
@@ -84,6 +92,8 @@
 				A62A9454261B030200F25659 /* ShaderGenVAO.h */,
 				A62A944E26186BAB00F25659 /* stb_image.h */,
 				A62A9453261B00D400F25659 /* Shader.h */,
+				A666CFB3266246D400332D3B /* model.h */,
+				A666CFB52662490600332D3B /* mesh.h */,
 			);
 			path = LeanOpenGL;
 			sourceTree = "<group>";
@@ -91,6 +101,8 @@
 		3ADB9FC1260E0EA600A11AE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A666CFB826624F6200332D3B /* libassimp.a */,
+				A666CFB726624F6200332D3B /* libIrrXML.a */,
 				3AEFE28F260F08F8007253A5 /* IOKit.framework */,
 				3AEFE28D260F08E9007253A5 /* OpenGL.framework */,
 				3AEFE28B260F08D9007253A5 /* Cocoa.framework */,
